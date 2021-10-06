@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  HashRouter,
+  Route,
+} from 'react-router-dom';
 import 'antd/dist/antd.css';
 import './index.css';
-import { Layout, Menu, Typography } from 'antd';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { Layout, Typography } from 'antd';
 import Notes from './components/Notes/Notes';
+import Todo from './components/Todo/Todo';
+import Navbar from './components/Navbar/Navbar';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Footer, Sider } = Layout;
 const { Title } = Typography;
 
 ReactDOM.render(
   <Layout>
+    <HashRouter>
     <Sider
+      style={{backgroundColor:"#ffbd90"}}
       breakpoint="lg"
       collapsedWidth="0"
       onBreakpoint={broken => {
@@ -24,27 +31,16 @@ ReactDOM.render(
       <div className="logo">
         <Title level={3} style={{color: 'white'}}>Cozy Notes</Title>
       </div>
-      
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-        <Menu.Item key="1" icon={<UserOutlined />}>
-          Home
-        </Menu.Item>
-        <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-          Notebook
-        </Menu.Item>
-        <Menu.Item key="3" icon={<UploadOutlined />}>
-          Todo
-        </Menu.Item>
-        <Menu.Item key="4" icon={<UserOutlined />}>
-          Profile
-        </Menu.Item>
-      </Menu>
+      <Navbar />
     </Sider>
     <Layout>
       <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
-      <Notes />
+      <Route exact path="/notebook" component={Notes}/>
+      <Route path="/todo" component={Todo}/>
       <Footer style={{ textAlign: 'center' }}>Cozy Notes ©2021 Created by Sharon Wong</Footer>
     </Layout>
+    </HashRouter>
+    
   </Layout>,
   document.getElementById('container'),
 );
