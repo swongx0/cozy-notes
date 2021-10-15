@@ -16,6 +16,14 @@ h1 {
   color: white;
 }
 
+.ant-layout {
+  background-color: #f6e4db;
+}
+
+.ant-layout-footer {
+  background-color: #f6e4db;
+}
+
 .logo {
   height: 32px;
   margin: 16px;
