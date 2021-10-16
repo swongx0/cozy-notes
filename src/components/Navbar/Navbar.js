@@ -8,17 +8,17 @@ import {
 const Navbar = () => {
 
     return (
-        <Menu style={{backgroundColor:"#ffbd90"}} mode="inline" defaultSelectedKeys={['2']}>
-          <Menu.Item key="1" icon={<UserOutlined />}>
+        <Menu style={{backgroundColor:"#ffbd90"}} mode="inline" defaultSelectedKeys={['1']}>
+          <Menu.Item key="1">
             <NavLink to="/">Home</NavLink>
           </Menu.Item>
-          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+          <Menu.Item key="2">
             <NavLink to="/notebook">Notebook</NavLink>
           </Menu.Item>
-          <Menu.Item key="3" icon={<UploadOutlined />}>
+          <Menu.Item key="3">
             <NavLink to="/todo">Todo</NavLink>
           </Menu.Item>
-          <Menu.Item key="4" icon={<UserOutlined />}>
+          <Menu.Item key="4">
             Profile
           </Menu.Item>
         </Menu>

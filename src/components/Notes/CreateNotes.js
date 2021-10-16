@@ -35,19 +35,24 @@ const CreateNotes = ({setNotes}) => {
         console.log(form)
     }
 
+    function addNote() {
+        setNotes(note => [...note, form])
+        setForm({ title: '', body: ''})
+    }
+
     return (
         <Content style={{ padding: '25px 50px', margin: '24px 16px 0' }}>
             <div className="site-layout-background rounded" style={{ padding: 24, minHeight: 360 }}>
                 <Title level={3}>New Note</Title>
                 <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-                    <Form.Item name={['user', 'title']} label="Title" value={form.title} onChange={handleChange} rules={[{ required: true }]}>
-                        <Input />
+                    <Form.Item label="Title" rules={[{ required: true }]}>
+                        <Input name='title' value={form.title} onChange={handleChange}/>
                     </Form.Item>
-                    <Form.Item name={['user', 'body']} label="Body" value={form.body} onChange={handleChange}>
-                        <Input.TextArea />
+                    <Form.Item label="Body">
+                        <Input.TextArea name='body' value={form.body} onChange={handleChange} style={{height:'60vh'}} />
                     </Form.Item>
                     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 1 }}>
-                        <Button type="primary" htmlType="submit">
+                        <Button onClick={addNote} type="primary">
                         Submit
                         </Button>
                     </Form.Item>

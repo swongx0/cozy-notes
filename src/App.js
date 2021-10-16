@@ -10,6 +10,7 @@ import Notes from './components/Notes/Notes';
 import Todo from './components/Todo/Todo';
 import Navbar from './components/Navbar/Navbar';
 import CreateNotes from './components/Notes/CreateNotes'
+import Home from './components/Main/Home';
 
 const { Header, Footer, Sider } = Layout;
 const { Title } = Typography;
@@ -32,12 +33,15 @@ const App = () => {
             }}
             >
             <div className="logo">
-                <Title level={3} style={{color: 'white'}}>Cozy Notes</Title>
+                <Title level={3}>Cozy Notes</Title>
             </div>
             <Navbar />
             </Sider>
             <Layout>
-            <Route exact path="/notebook">
+            <Route exact path="/">
+                <Home/>
+            </Route>
+            <Route path="/notebook">
                 <Notes notes={notes}/>
             </Route>
             <Route path="/todo" component={Todo}/>
