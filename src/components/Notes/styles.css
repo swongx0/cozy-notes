@@ -5,3 +5,13 @@
 .rounded {
   border-radius: 25px;
 }
+
+.notecard-links {
+  padding-right: 10px;
+}
+
+.notecard-container {
+  display: inline-flex;
+  float: right;
+  margin-top: 25px;
+}

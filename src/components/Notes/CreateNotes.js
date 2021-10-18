@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Layout, Typography, Form, Input, InputNumber, Button } from 'antd';
 import './styles.css'
 import useSelection from 'antd/lib/table/hooks/useSelection';
@@ -12,32 +12,32 @@ const layout = {
 };
 
 const validateMessages = {
-  required: '${label} is required!',
-  types: {
-    email: '${label} is not a valid email!',
-    number: '${label} is not a valid number!',
-  },
-  number: {
-    range: '${label} must be between ${min} and ${max}',
-  },
+    required: '${label} is required!',
+    types: {
+        email: '${label} is not a valid email!',
+        number: '${label} is not a valid number!',
+    },
+    number: {
+        range: '${label} must be between ${min} and ${max}',
+    },
 };
 
-const CreateNotes = ({setNotes}) => {
+const CreateNotes = ({ setNotes }) => {
     const onFinish = (values: any) => {
-    console.log(values);
+        console.log(values);
     };
 
-    const [form, setForm] = useState({ title: '', body: ''})
+    const [form, setForm] = useState({ title: '', body: '' })
 
     function handleChange(event) {
-        const {value, name} = event.target
-        setForm({...form, [name]: value})
+        const { value, name } = event.target
+        setForm({ ...form, [name]: value })
         console.log(form)
     }
 
     function addNote() {
         setNotes(note => [...note, form])
-        setForm({ title: '', body: ''})
+        setForm({ title: '', body: '' })
     }
 
     return (
@@ -46,17 +46,17 @@ const CreateNotes = ({setNotes}) => {
                 <Title level={3}>New Note</Title>
                 <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
                     <Form.Item label="Title" rules={[{ required: true }]}>
-                        <Input name='title' value={form.title} onChange={handleChange}/>
+                        <Input name='title' value={form.title} onChange={handleChange} />
                     </Form.Item>
                     <Form.Item label="Body">
-                        <Input.TextArea name='body' value={form.body} onChange={handleChange} style={{height:'60vh'}} />
+                        <Input.TextArea name='body' value={form.body} onChange={handleChange} style={{ height: '50vh' }} />
                     </Form.Item>
                     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 1 }}>
                         <Button onClick={addNote} type="primary">
-                        Submit
+                            Submit
                         </Button>
                     </Form.Item>
-                    </Form>
+                </Form>
             </div>
         </Content>
     )
